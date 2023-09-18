@@ -133,8 +133,6 @@ export default function DriverAssignment() {
   )
 
   function assignLocationDriver(locationId: number) {
-    console.log("locationId", locationId)
-
     if (selectedDriver != null) {
       setLocations(locations =>
         locations.map(locationI => {
