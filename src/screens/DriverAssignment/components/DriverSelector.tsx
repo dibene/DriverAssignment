@@ -1,5 +1,6 @@
 import React from "react"
-import { Driver, drivers } from "../DriverAssignment"
+import { Driver } from "../DriverAssignment"
+import { drivers } from "../utils"
 
 interface DriverSelectorProps {
   selectedDriver: Driver | null
@@ -13,7 +14,16 @@ export function DriverSelector({
     <div>
       <h2>
         {selectedDriver != null ? (
-          selectedDriver.name
+          <span style={{ display: "flex", gap: "8px",alignItems: "center" }}>
+            {selectedDriver.name}{" "}
+            <div
+              style={{
+                width: "20px",
+                height: "20px",
+                backgroundColor: selectedDriver.color,
+              }}
+            />
+          </span>
         ) : (
           <>First select a driver.</>
         )}

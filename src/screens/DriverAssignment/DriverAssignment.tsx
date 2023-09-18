@@ -1,36 +1,12 @@
 import React, { useState } from "react"
 import { DeliversAndDriversMap } from "./components/DeliversAndDriversMap/DeliversAndDriversMap"
 import { DriverSelector } from "./components/DriverSelector"
+import { deliveryLocations } from "./utils"
 
-// Sample data for delivery locations and drivers
-const deliveryLocations = [
-  {
-    id: 1,
-    lat: -34.921318,
-    lng: -57.953415,
-    assignedTo: 1,
-    direction: "la plata calle 51 123456",
-  },
-  {
-    id: 2,
-    lat: -34.921318,
-    lng: -57.9536,
-    assignedTo: null,
-    direction: "la plata calle 56 123456",
-  },
-  // i will add  more...
-]
-
-export const drivers = [
-  { id: 1, name: "Driver 1", color: "pink" },
-  { id: 2, name: "Driver 2", color: "lightblue" },
-  { id: 3, name: "Driver 3", color: "yellow" },
-  { id: 4, name: "Driver 4", color: "lightgreen" },
-  { id: 5, name: "Driver 5", color: "violet" },
-]
 export interface Driver {
   id: number
   name: string
+  color: string
 }
 export interface Location {
   id: number
@@ -89,10 +65,19 @@ export default function DriverAssignment() {
           </div>
 
           <aside>
-            <h2>Avaible locations</h2>
+            <h2 style={{ display: "flex", gap: "8px",alignItems: "center" }}>
+              Avaible locations{" "}
+              <div
+                style={{
+                  width: "20px",
+                  height: "20px",
+                  backgroundColor: "green",
+                }}
+              />
+            </h2>
             <ul>
               {avaiableLocations.map(location => (
-                <li key={location.id}>
+                <li key={location.id} style={{padding:"4px"}}>
                   {location.direction}{" "}
                   {selectedDriver != null && (
                     <button onClick={() => assignLocationDriver(location.id)}>
@@ -109,7 +94,7 @@ export default function DriverAssignment() {
                 {currentDriverLocations.length > 0 ? (
                   <ul>
                     {currentDriverLocations.map(location => (
-                      <li key={location.id}>
+                      <li key={location.id} style={{padding:"4px"}}>
                         {location.direction}{" "}
                         <button
                           onClick={() => removeLocationDriver(location.id)}

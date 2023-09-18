@@ -2,7 +2,8 @@ import React, { ReactElement } from "react"
 import { Status, Wrapper } from "@googlemaps/react-wrapper"
 import { Map } from "./Map"
 import { Marker } from "./Marker"
-import { Location, drivers } from "../../DriverAssignment"
+import { Location } from "../../DriverAssignment"
+import { drivers } from "../../utils"
 
 interface DeliversAndDriversMapProps {
   onClickLocation: (location: number) => void
@@ -35,7 +36,7 @@ export function DeliversAndDriversMap({
             onClick={() => onClickLocation(location.id)}
             icon={{
               path: MAP_MARKER,
-              scale: 1.4, 
+              scale: 1.4,
               fillColor:
                 location.assignedTo != null
                   ? getDriverColor(location.assignedTo)
